@@ -4,8 +4,7 @@ title: "My GSoC Journey - Part 1"
 subtitle: "GSoC : What, Why, How."
 date: 2022-05-29
 background: '/img/posts/GSoC.png'
-tags:
-- GSoC
+tags: gsoc
 ---
 
 ## What Is Google Summer of Code (GSoC)
