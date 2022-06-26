@@ -4,6 +4,8 @@ title: "Need to Blog!"
 subtitle: ""
 date: 2022-05-28
 background: '/img/posts/GSoC.png'
+tags:
+- GSoC
 ---
 
 # Intro
