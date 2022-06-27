@@ -2,8 +2,8 @@ title:              Jash Shah Blogs
 email:              jash28582@gmail.com
 description:        A small place on this vast network for me to write about my experiences with tech, people, place and life!
 author:             Jash Shah
-baseurl:            "/home"
-url:                "https://jash_shah.github.io"
+baseurl:            "/Blogs"
+url:                "jash_shah.github.io"
 
 # Social Profiles
 twitter_username:   
@@ -24,4 +24,4 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site
 
-theme: jekyll-theme-clean-blog
+theme: jekyll-theme-minimal
