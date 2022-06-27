@@ -4,6 +4,7 @@ title: "My GSoC Journey - Part 2"
 subtitle: "Community Bonding"
 date: 2022-06-26
 background: '/img/community-bonding.jpg'
+tags: gsoc
 ---
 
 ## Community Bonding Period
