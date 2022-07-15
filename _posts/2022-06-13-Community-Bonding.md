@@ -3,7 +3,7 @@ layout: post
 title: "My GSoC Journey - Part 2"
 subtitle: "Community Bonding"
 date: 2022-06-26
-background: '/img/community-bonding.jpg'
+background: '/img/posts/community-bonding.jpg'
 tags: gsoc
 ---
 
@@ -17,8 +17,8 @@ As I had my end semester exams scheduled from 9th May till 27th May, it was toug
 I dedicated myself to learning about [Python Extensions](https://docs.python.org/3/extending/extending.html#compilation-and-linkage)(whose docs are really succinct!) and testing them out by creating some sample modules during this period. It was quite inciteful as it gave me a greater perspective into what the final outcome of my project will be and what flow of work I would have to follow to achieve that.
 <br><br>
 I was also pretty excited about finally getting to meet my mentor, [Mohammad Akhlaghi](https://akhlaghi.org/), who I had only talked to over the mail and IRC, but had been incredibly kind and welcoming. Taking the schedules of all other developers into cosideration as well, we decided to make **`Tuesdays 1:00PM,CEST(4:30PM IST) as our weekly meet times`**. The first meet went great, and was really fun(allbeit overwhelming) to meet all the other developers and get an insight into the awesome work everyone's doing at Gnuastro! I presented a few slides I had prepared to give an overview of my project to the the other developers. Alongwith Mohammad, we were also able to decide a few goals for the next meet, them being:
-- Learn more about **`Python ExtensioN Modules`** and try to extend a simple Gnuastro Library module([cosmiccal](https://www.gnu.org/savannah-checkouts/gnu/gnuastro/manual/html_node/CosmicCalculator.html) in particular) into Python.
-- Reasearch into the [**`NumPy C-API**`](https://numpy.org/doc/stable/reference/c-api/index.html) and how we can go about building a converter between [Gnuastro's core data-structure](https://www.gnu.org/savannah-checkouts/gnu/gnuastro/manual/html_node/Generic-data-container.html) and NumPy's [PyArrayObject](https://numpy.org/doc/stable/reference/c-api/types-and-structures.html#c.PyArray_Type).
+- Learn more about **`Python Extension Modules`** and try to extend a simple Gnuastro Library module([<u>cosmiccal</u>](https://www.gnu.org/savannah-checkouts/gnu/gnuastro/manual/html_node/CosmicCalculator.html) in particular) into Python.
+- Reasearch into the [<u>NumPy C-API</u>](https://numpy.org/doc/stable/reference/c-api/index.html) and how we can go about building a converter between [<u>Gnuastro's core data-structure</u>](https://www.gnu.org/savannah-checkouts/gnu/gnuastro/manual/html_node/Generic-data-container.html) and NumPy's [<u>PyArrayObject</u>](https://numpy.org/doc/stable/reference/c-api/types-and-structures.html#c.PyArray_Type).
 
 ### Conclusion
 As mentioned in the afformentioned definition of *Community Bonding* given by GSoC, I think I managed to get a good insight into the Gnuastro's community by **observing their communications and contributions** while also making myself familiar with their work style!
