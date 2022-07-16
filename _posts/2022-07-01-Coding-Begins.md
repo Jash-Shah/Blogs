@@ -11,38 +11,27 @@ tags: gsoc
 So, now that I got to know the Gnuastro community a bit and had discussed the plan of attack with my mentor it was time to start with the actual coding.
 
 ### Week 1
-As planned, I started with the building the extension module for [Cosmic Calculator](https://www.gnu.org/savannah-checkouts/gnu/gnuastro/manual/html_node/CosmicCalculator.html) library. A simple Python extension Module should be structed as:
-```c
-static PyMethodDef AstroMethods[] = {
+As planned, I started with the building the extension module for [Cosmic Calculator](https://www.gnu.org/savannah-checkouts/gnu/gnuastro/manual/html_node/CosmicCalculator.html)(cosmiccal) library. A simple Python extension Module should be structed as:
 
-    /* When using only METH_VARARGS, the function should expect the
-    Python-level parameters to be passed in as a tuple acceptable for parsing via PyArg_ParseTuple() */
-    {"function_name", function_name, METH_VARARGS, "Perform a function."},
-    .
-        .
-        .
-        .{NULL, NULL, 0, NULL} /* Sentinel */
-};
+![Code-Block1]({{site.baseurl}}/img/posts/gsoc-coding-begins/code-block-1.png)
 
-static struct PyModuleDef astromodule = {
-    PyModuleDef_HEAD_INIT,
-    "astro",                      /* name of module */
-    "Astronomical calculations.", /* module documnetation, maybe NULL */
-    -1,                           /* size of per-interpreter state of the module,
-                                      or -1 if the module keeps state in global variables. */
-    AstroMethods};
+The cosmical library was chosen as a starting point because it contained only 6 functions and solely dealt with *doubles, ints, and floats*. Consequently, there wasn't yet a requirement for a NumPy Converter. It was very simple to create wrappers for these functions by following the aforementioned structure. The `setup.py` script for creating and installing these modules was then created as the following stage. For this, I followed the [Python Extension documentation's](https://docs.python.org/3/extending/building.html#building) advice and utilised [`distutils`](https://docs.python.org/3/distutils/apiref.html), which offers two crucial functions:
+- [<u>distutils.core.Extension</u>](https://docs.python.org/3/distutils/apiref.html#distutils.core.Extension) which is used to describe a `C/C++` extension.
+- [<u>distutils.core.setup</u>](https://docs.python.org/3/distutils/apiref.html#distutils.core.setup) the frontman in actually building and compiling the modules.
 
-/*
-The initialization function must be named PyInit_name(), where name is the name of the module, and should be the
-only non-static item defined in the module file.
-PyMODINIT_FUNC declares the function as PyObject * return type,
-declares any special linkage declarations required by the platform.
-*/
-PyMODINIT_FUNC
-PyInit_spam(void)
-{
-    /* PyModule_Create(), which returns a module object, and inserts built-in function objects into the newly created
-    module based upon the table (an array of PyMethodDef structures) found in the module definition. */
-    return PyModule_Create(&astromodule);
-}
+![Code-Block2]({{site.baseurl}}/img/posts/gsoc-coding-begins/code-block-2.png)
+
+After this, the commands to build and install these modules were simply:
+```bash
+python3 setup.py build
+python3 setup.py install
 ```
+
+### Week 2
+At our subsequent meeting, my mentor confirmed my work, and we both agreed that the next step should be to write the NumPy converter so that this may be *expanded* to include the other library modules as well.
+
+Week 2 was a little light on work because I was out of town for a few days. However, the most of my reading time was devoted to learning about the `NumPy C-API` and how it connected with the `Python C-API`.
+
+I discovered that a NumPy array's primary container object was the [`PyArrayObject`](https://numpy.org/doc/stable/reference/c-api/types-and-structures.html#c.PyArrayObject), and its `PyTypeObject` was the [`PyArray_Type`](https://numpy.org/doc/stable/reference/c-api/types-and-structures.html#c.PyArray_Type). Therefore, in order for any `PyObject` to be regarded as a NumPy Array, it has to fulfil these two requirements.
+
+The API itself offered [functions](https://numpy.org/doc/stable/reference/c-api/array.html#creating-arrays) that allowed any generic array type data container to be converted into PyArray Type or one of its subclasses. For creating the converter, I would always turn to these!

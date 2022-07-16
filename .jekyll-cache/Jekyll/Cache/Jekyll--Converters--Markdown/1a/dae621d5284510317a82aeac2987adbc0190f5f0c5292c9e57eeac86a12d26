@@ -1,0 +1,8 @@
+I"H<h2 id="coding-begins">Coding Begins!</h2>
+<p>So, now that I got to know the Gnuastro community a bit and had discussed the plan of attack with my mentor it was time to start with the actual coding.</p>
+
+<h3 id="week-1">Week 1</h3>
+<p>As planned, I started with the building the extension module for <a href="https://www.gnu.org/savannah-checkouts/gnu/gnuastro/manual/html_node/CosmicCalculator.html">Cosmic Calculator</a> library. A simple Python extension Module should be structed as:</p>
+
+<p><img src="/Blogs/img/posts/gsoc-coding-begins/code-block1.png" alt="Code-Block1" /></p>
+:ET

@@ -1,0 +1,39 @@
+I"™<h2 id="coding-begins">Coding Begins!</h2>
+<p>So, now that I got to know the Gnuastro community a bit and had discussed the plan of attack with my mentor it was time to start with the actual coding.</p>
+
+<h3 id="week-1">Week 1</h3>
+<p>As planned, I started with the building the extension module for <a href="https://www.gnu.org/savannah-checkouts/gnu/gnuastro/manual/html_node/CosmicCalculator.html">Cosmic Calculator</a> library. A simple Python extension Module should be structed as:</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="n">PyMethodDef</span> <span class="n">AstroMethods</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="cm">/* When using only METH_VARARGS, the function should expect the
+    Python-level parameters to be passed in as a tuple acceptable for parsing via PyArg_ParseTuple() */</span>
+    <span class="p">{</span><span class="s">"function_name"</span><span class="p">,</span> <span class="n">function_name</span><span class="p">,</span> <span class="n">METH_VARARGS</span><span class="p">,</span> <span class="s">"Perform a function."</span><span class="p">},</span>
+    <span class="p">.</span>
+        <span class="p">.</span>
+        <span class="p">.</span>
+        <span class="p">.{</span><span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">}</span> <span class="cm">/* Sentinel */</span>
+<span class="p">};</span>
+
+<span class="k">static</span> <span class="k">struct</span> <span class="n">PyModuleDef</span> <span class="n">astromodule</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">PyModuleDef_HEAD_INIT</span><span class="p">,</span>
+    <span class="s">"astro"</span><span class="p">,</span>                      <span class="cm">/* name of module */</span>
+    <span class="s">"Astronomical calculations."</span><span class="p">,</span> <span class="cm">/* module documnetation, maybe NULL */</span>
+    <span class="o">-</span><span class="mi">1</span><span class="p">,</span>                           <span class="cm">/* size of per-interpreter state of the module,
+                                      or -1 if the module keeps state in global variables. */</span>
+    <span class="n">AstroMethods</span><span class="p">};</span>
+
+<span class="cm">/*
+The initialization function must be named PyInit_name(), where name is the name of the module, and should be the
+only non-static item defined in the module file.
+PyMODINIT_FUNC declares the function as PyObject * return type,
+declares any special linkage declarations required by the platform.
+*/</span>
+<span class="n">PyMODINIT_FUNC</span>
+<span class="nf">PyInit_spam</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="cm">/* PyModule_Create(), which returns a module object, and inserts built-in function objects into the newly created
+    module based upon the table (an array of PyMethodDef structures) found in the module definition. */</span>
+    <span class="k">return</span> <span class="n">PyModule_Create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">astromodule</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+:ET

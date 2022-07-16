@@ -1,0 +1,30 @@
+I"�<h2 id="coding-begins">Coding Begins!</h2>
+<p>So, now that I got to know the Gnuastro community a bit and had discussed the plan of attack with my mentor it was time to start with the actual coding.</p>
+
+<h3 id="week-1">Week 1</h3>
+<p>As planned, I started with the building the extension module for <a href="https://www.gnu.org/savannah-checkouts/gnu/gnuastro/manual/html_node/CosmicCalculator.html">Cosmic Calculator</a>(cosmiccal) library. A simple Python extension Module should be structed as:</p>
+
+<p><img src="/Blogs/img/posts/gsoc-coding-begins/code-block-1.png" alt="Code-Block1" /></p>
+
+<p>The cosmical library was chosen as a starting point because it contained only 6 functions and solely dealt with <em>doubles, ints, and floats</em>. Consequently, there wasn’t yet a requirement for a NumPy Converter. It was very simple to create wrappers for these functions by following the aforementioned structure. The <code class="language-plaintext highlighter-rouge">setup.py</code> script for creating and installing these modules was then created as the following stage. For this, I followed the <a href="https://docs.python.org/3/extending/building.html#building">Python Extension documentation’s</a> advice and utilised <a href="https://docs.python.org/3/distutils/apiref.html"><code class="language-plaintext highlighter-rouge">distutils</code></a>, which offers two crucial functions:</p>
+<ul>
+  <li><a href="https://docs.python.org/3/distutils/apiref.html#distutils.core.Extension"><u>distutils.core.Extension</u></a> which is used to describe a <code class="language-plaintext highlighter-rouge">C/C++</code> extension.</li>
+  <li><a href="https://docs.python.org/3/distutils/apiref.html#distutils.core.setup"><u>distutils.core.setup</u></a> the frontman in actually building and compiling the modules.</li>
+</ul>
+
+<p><img src="/Blogs/img/posts/gsoc-coding-begins/code-block-2.png" alt="Code-Block2" /></p>
+
+<p>After this, the commands to build and install these modules were simply:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 setup.py build
+python3 setup.py <span class="nb">install</span>
+</code></pre></div></div>
+
+<h3 id="week-2">Week 2</h3>
+<p>I got the progress verified by my mentor in our next meet, and we agreed that the next step should be writing the NumPy converter so that this can be <em>extended</em> to the other library modules as well.</p>
+
+<p>Week 2 was a bit sparse in work as I was out of town for a few days, hence it was tough to try to put much code down. Although, I spent most of my time reading up on the <code class="language-plaintext highlighter-rouge">NumPy C-API</code> and how it interacted with the <code class="language-plaintext highlighter-rouge">Python C-API</code>.</p>
+
+<p>What I learnt was that the main container object for a NumPy array was the <a href="https://numpy.org/doc/stable/reference/c-api/types-and-structures.html#c.PyArrayObject"><code class="language-plaintext highlighter-rouge">PyArrayObject</code></a> and its <code class="language-plaintext highlighter-rouge">PyTypeObject</code> was the <a href="https://numpy.org/doc/stable/reference/c-api/types-and-structures.html#c.PyArray_Type"><code class="language-plaintext highlighter-rouge">PyArray_Type</code></a>. Hence, for any <code class="language-plaintext highlighter-rouge">PyObject</code> to be considered a NumPy Array, it needed to comply with these two properties.</p>
+
+<p>There were <a href="https://numpy.org/doc/stable/reference/c-api/array.html#creating-arrays">functions</a> provided by the API itself, which could convert any generic array type data container into <code class="language-plaintext highlighter-rouge">PyArray_Type</code> or one of it’s subtypes. These would be my go-to for building the converter!</p>
+:ET
