@@ -3,7 +3,7 @@ layout: post
 title: "My GSoC Journey - Part 4"
 subtitle: "Week 3 & 4 - How low can you go..."
 date: 2022-07-20
-background: '/img/posts/gsoc-coding-begins/bg-coding-begins.png'
+background: '/img/posts/gsoc-week3_4/gnu_python.jpg'
 tags: gsoc
 ---
 
