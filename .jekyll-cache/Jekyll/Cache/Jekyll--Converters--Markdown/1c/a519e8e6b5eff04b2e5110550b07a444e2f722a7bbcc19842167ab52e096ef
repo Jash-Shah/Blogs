@@ -1,0 +1,2 @@
+I"6<p><em>Writing the extension modules and Python wrappers for a package is one thing, but a step which is often overlooked is making a build system that complies with the rest of your program, ensures the correct installation based on your dependencies and also is portable enough to be distributable.</em></p>
+:ET

@@ -1,15 +1,0 @@
-I"<h2 id="coding-begins">Coding Begins!</h2>
-<p>So, now that I got to know the Gnuastro community a bit and had discussed the plan of attack with my mentor it was time to start with the actual coding.</p>
-
-<h3 id="week-1">Week 1</h3>
-<p>As planned, I started with the building the extension module for <a href="https://www.gnu.org/savannah-checkouts/gnu/gnuastro/manual/html_node/CosmicCalculator.html">Cosmic Calculator</a>(cosmiccal) library. A simple Python extension Module should be structed as:</p>
-
-<p><img src="/Blogs/img/posts/gsoc-coding-begins/code-block-1.png" alt="Code-Block1" /></p>
-
-<p>The reason for starting with the cosmiccal library was that it had only 6 functions and all of them only dealt with <em>doubles,ints and floats</em>. Hence, there wasn’t a need for a NumPy Converter just yet.
-Following the structure above, it was quite straightforward to build wrappers for these functions. The next step involved writing the <code class="language-plaintext highlighter-rouge">setup.py</code> script for building and installing these modules. For this, as recommended on the <a href="https://docs.python.org/3/extending/building.html#building">Python Extension docs</a> I used <a href="https://docs.python.org/3/distutils/apiref.html"><code class="language-plaintext highlighter-rouge">&lt;u&gt;distutils&lt;/u&gt;</code></a> which provides two important functions:</p>
-<ul>
-  <li><a href="https://docs.python.org/3/distutils/apiref.html#distutils.core.Extension"><u>`distutils.core.Extension`</u></a> which is used to describe a <code class="language-plaintext highlighter-rouge">C/C++</code> extension.</li>
-  <li><a href="https://docs.python.org/3/distutils/apiref.html#distutils.core.setup"><u>`distutils.core.setup`</u></a> the frontman in actually building and compiling the modules.</li>
-</ul>
-:ET
