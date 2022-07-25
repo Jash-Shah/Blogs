@@ -9,7 +9,7 @@ tags: gsoc
 
 *Writing the extension modules and Python wrappers for a package is one thing, but a step that is often overlooked is making a build system that complies with the rest of your program, ensures the correct installation based on your dependencies and also is portable enough to be distributable.*
 
-*I learned these things the hard way in my Week 3 and 4, where I went as low level as I could to try to solve all the weird build errors and glitches I had.*
+*I learned these things the hard way in Week 3 and 4, where I went as low level as I could to try to solve all the weird build errors and glitches I had while **trying to build a Python Package using GNU Autotools**.*
 
 ## Building
 As discussed in my last GSoC blog, I was mainly using `distutils` along with it's `distutils.setup` script to take care of all the building and linking required for building the `.so` (shared object) file required by the  Python Interpreter. However, one of my co-mentors brought up a good point that `setuptools` is the packaging tool that is recommended by [PyPA](https://packaging.python.org/en/latest/guides/tool-recommendations/) and also using `wheels` to package the modules instead of the standard `setup.py build` command.
